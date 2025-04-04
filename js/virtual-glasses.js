@@ -1,7 +1,6 @@
-import * as THREE from '../node_modules/three/build/three.module.js';
-import {OrbitControls} from '../node_modules/three/examples/jsm/controls/OrbitControls.js';
-import {GLTFLoader} from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
-
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 const webcamElement = document.getElementById('webcam');
 const canvasElement = document.getElementById('canvas');
 const webcam = new Webcam(webcamElement, 'user');
@@ -151,7 +150,7 @@ async function drawglasses(faces){
             let pointrightEye = face.scaledMesh[ glassesKeyPoints.rightEye ];
 
             glasses.position.x = pointMidEye[ 0 ];
-            glasses.position.y = -pointMidEye[ 1 ] + parseFloat(selectedglasses.attr("data-3d-up"));
+            glasses.position.y = (-pointMidEye[ 1 ] * 0.4) + parseFloat(selectedglasses.attr("data-3d-up")); 
             glasses.position.z = -camera.position.z + pointMidEye[ 2 ];
 
             glasses.up.x = pointMidEye[ 0 ] - pointNoseBottom[ 0 ];
@@ -167,9 +166,10 @@ async function drawglasses(faces){
                 ( pointleftEye[ 1 ] - pointrightEye[ 1 ] ) ** 2 +
                 ( pointleftEye[ 2 ] - pointrightEye[ 2 ] ) ** 2
             );
-            glasses.scale.x = eyeDist * parseFloat(selectedglasses.attr("data-3d-scale")) ;
-            glasses.scale.y = eyeDist * parseFloat(selectedglasses.attr("data-3d-scale")) ;
-            glasses.scale.z = eyeDist * parseFloat(selectedglasses.attr("data-3d-scale")) ;
+            const scaleFactor = 0.8;  // Adjust this value to make it smaller
+glasses.scale.x = eyeDist * parseFloat(selectedglasses.attr("data-3d-scale")) * scaleFactor;
+glasses.scale.y = eyeDist * parseFloat(selectedglasses.attr("data-3d-scale")) * scaleFactor;
+glasses.scale.z = eyeDist * parseFloat(selectedglasses.attr("data-3d-scale")) * scaleFactor;
 
             glasses.rotation.y = Math.PI;
             glasses.rotation.z = Math.PI / 2 - Math.acos( glasses.up.x );
@@ -283,4 +283,3 @@ var setup3dAnimate = function () {
     }
     renderer.render(scene, camera);
 };
-
