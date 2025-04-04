@@ -6,6 +6,13 @@ Experience the cutting-edge fusion of computer vision and augmented reality
 
 Allowing users to try on various 3D glasses in real-time.
 
+The 3D glasses models used in this project are created using **Blender**, a powerful 3D modeling tool.
+
+## Demo Video
+Watch a demo video of how the virtual glasses work in real-time:
+
+https://github.com/user-attachments/assets/3be07846-b663-4739-8605-cbd2a80d8b32
+
 ## Installing
 Install three.js
 ``` bash
