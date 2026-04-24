@@ -18,9 +18,6 @@ Install three.js
 ``` bash
 npm install --save three
 ```
-Point your localhost to the cloned root directory
-
-Browse to http://localhost/index.html 
 
 ## Face Keypoints 
 The facemesh detected keypoints that used for overlay the 3D Glasses:
